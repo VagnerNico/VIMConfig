@@ -31,3 +31,8 @@ cp nvim/* $HOME/.config/nvim
 # Installing config plugins
 vim -c "PlugInstall" -c q! -c q!
 nvim -c "PlugInstall" -c q! -c q!
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+    nvim $HOME/.config/.vimrc -c "/set termguicolors" -c .d -c .d -c wq
+    nvim $HOME/.config/nvim/init.vim -c "/set termguicolors" -c .d -c .d -c wq
+fi
