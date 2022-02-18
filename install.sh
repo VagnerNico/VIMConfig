@@ -25,7 +25,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # Copying the vim and nvim configs
 cp vim/.vimrc $HOME
-mkdir $HOME/.config/nvim
+mkdir -p $HOME/.config/nvim
 cp nvim/* $HOME/.config/nvim
 
 # Installing config plugins
