@@ -28,7 +28,7 @@ let mapleader=","
 runtime macros/matchit.vim
 
 "Install CoC tsserver
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-tsserver']
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
