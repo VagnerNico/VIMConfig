@@ -1,0 +1,4 @@
+function matchitSetup()
+  --Matchit script
+  vim.cmd("runtime macros/matchit.vim")
+end
