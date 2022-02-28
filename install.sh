@@ -29,7 +29,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # Copying the vim and nvim configs
 cp vim/.vimrc $HOME
 mkdir -p $HOME/.config/nvim
-cp nvim/* $HOME/.config/nvim
+cp -r nvim/* $HOME/.config/nvim
 cp lvim/config.lua $HOME/.config/nvim/config.lua
 
 # Installing config plugins
@@ -38,5 +38,4 @@ nvim -c "PackerInstall" -c q! -c q!
 
 if [[ $OSTYPE == 'darwin'* ]]; then
     nvim $HOME/.config/.vimrc -c "/set termguicolors" -c .d -c .d -c wq
-    nvim $HOME/.config/nvim/init.vim -c "/set termguicolors" -c .d -c .d -c wq
 fi
