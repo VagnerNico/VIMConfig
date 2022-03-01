@@ -30,7 +30,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp vim/.vimrc $HOME
 mkdir -p $HOME/.config/nvim
 cp -r nvim/* $HOME/.config/nvim
-cp lvim/config.lua $HOME/.config/nvim/config.lua
+cp lvim/config.lua $HOME/.config/lvim/config.lua
 
 # Installing config plugins
 vim -c "PlugInstall" -c q! -c q!
