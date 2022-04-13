@@ -10,6 +10,7 @@ lvim.autocommands.custom_groups = {
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = ","
 
+lvim.keys.insert_mode[","] = ","
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.visual_mode["S"] = ""
@@ -46,7 +47,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
-    exe = "eslint",
+    exe = "eslint_d",
     filetypes = {
       "javascriptreact",
       "javascript",
@@ -60,7 +61,7 @@ linters.setup {
 local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
   {
-    exe = "eslint",
+    exe = "eslint_d",
     filetypes = {
       "javascriptreact",
       "javascript",
@@ -91,6 +92,25 @@ lvim.plugins = {
     event = "BufReadPre",
     before = "williamboman/nvim-lsp-installer",
   },
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gvdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = {"fugitive"}
+  },
 }
 
 -- Emmet configuration
@@ -106,7 +126,7 @@ vim.g.user_emmet_settings = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
 
-vim.list_extend(lvim.lsp.override, { "eslint", "tsserver" })
+vim.list_extend(lvim.lsp.override, { "eslint_d", "tsserver" })
 
 local servers = require("nvim-lsp-installer.servers")
 local status_ok, ts_utils = pcall(require, "nvim-lsp-ts-utils")
