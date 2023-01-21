@@ -295,7 +295,7 @@ vim.g.user_emmet_settings = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "eslint", "tsserver" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "eslint", "html", "tsserver" })
 
 local status_ok, ts_utils = pcall(require, "nvim-lsp-ts-utils")
 
@@ -347,10 +347,28 @@ local tsserverOptions = {
   },
 }
 
+local htmlOptions = {
+  settings = {
+    css = {
+      lint = {
+        validProperties = {},
+      },
+    },
+    html = {
+      format = {
+        indentInnerHtml = true,
+        templating = true,
+        wrapAttributes = "preserve",
+      }
+    }
+  }
+}
+
 require("lvim.lsp.manager").setup("eslint", eslintOptions)
 require("lvim.lsp.manager").setup("tsserver", tsserverOptions)
 require("lvim.lsp.manager").setup("pyright", {})
 require("lvim.lsp.manager").setup("pylint", {})
+require("lvim.lsp.manager").setup("html", htmlOptions)
 
 --Copilot overrides
 local cmp = require "cmp"
