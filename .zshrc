@@ -128,6 +128,7 @@ export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/opt/libpq/bin
 
 export ANDROID_HOME=~/Android/Sdk
+export ANDROID_NDK=$ANDROID_HOME/ndk/25.1.8937393
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/tools/bin:$PATH
