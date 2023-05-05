@@ -9,6 +9,7 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
+vim.opt.clipboard = "unnamedplus"
 vim.opt.linebreak = true
 vim.opt.relativenumber = true
 vim.opt.wrap = true
@@ -108,7 +109,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.indent = { enable = true, disable = { "yaml", "python" } }
 
 -- ESLint
-lvim.lsp.diagnostics.update_in_insert = true
+lvim.diagnostic.config({ update_in_insert = true })
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
@@ -121,10 +122,6 @@ linters.setup {
       "vue",
     },
   },
-  {
-    exe = "pylint",
-    filetypes = { "python" },
-  }
 }
 
 local code_actions = require "lvim.lsp.null-ls.code_actions"
@@ -144,7 +141,7 @@ code_actions.setup {
 -- Additional Plugins
 lvim.plugins = {
   { "tpope/vim-surround" },
-  { "dracula/vim", as = "dracula" },
+  { "dracula/vim",       as = "dracula" },
   { "mattn/emmet-vim" },
   { "github/copilot.vim" },
   {
@@ -367,7 +364,6 @@ local htmlOptions = {
 require("lvim.lsp.manager").setup("eslint", eslintOptions)
 require("lvim.lsp.manager").setup("tsserver", tsserverOptions)
 require("lvim.lsp.manager").setup("pyright", {})
-require("lvim.lsp.manager").setup("pylint", {})
 require("lvim.lsp.manager").setup("html", htmlOptions)
 
 --Copilot overrides

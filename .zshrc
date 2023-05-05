@@ -71,11 +71,16 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autoupdate
   git
+  spaceship-vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-completions
   asdf
 )
+autoload -U compinit && compinit
+
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -106,23 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/opt/libpq/bin
@@ -168,6 +156,7 @@ if [[ -d venv ]] ; then
 fi
 
 alias psql_start='/home/nicolodi/.asdf/installs/postgres/9.6.24/bin/pg_ctl -D /home/nicolodi/.asdf/installs/postgres/9.6.24/data -l $HOME/pglogs/logfile start'
+alias psql_stop='/home/nicolodi/.asdf/installs/postgres/9.6.24/bin/pg_ctl -D /home/nicolodi/.asdf/installs/postgres/9.6.24/data -l $HOME/pglogs/logfile stop'
 
 export DATADIR="$HOME/mysql"
 alias mysql_start="mysqld_safe --datadir=$DATADIR"
