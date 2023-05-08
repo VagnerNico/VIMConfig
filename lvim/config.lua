@@ -109,7 +109,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.indent = { enable = true, disable = { "yaml", "python" } }
 
 -- ESLint
-lvim.diagnostic.config({ update_in_insert = true })
+vim.diagnostic.config({ update_in_insert = true })
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
@@ -141,7 +141,10 @@ code_actions.setup {
 -- Additional Plugins
 lvim.plugins = {
   { "tpope/vim-surround" },
-  { "dracula/vim",       as = "dracula" },
+  {
+    "dracula/vim",
+    name = "dracula"
+  },
   { "mattn/emmet-vim" },
   { "github/copilot.vim" },
   {
@@ -154,7 +157,7 @@ lvim.plugins = {
       "typescriptreact",
       "typescript.tsx",
     },
-    opt = true,
+    lazy = true,
     event = "BufReadPre",
     before = "williamboman/nvim-lsp-installer",
   },
